@@ -1,17 +1,17 @@
 // VideoPlayer.jsx
 
-import React, { useRef, useEffect } from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import React, {useRef, useEffect} from 'react';
+import {View, StyleSheet, Dimensions} from 'react-native';
 import Video from 'react-native-video';
 
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
-const VideoPlayer = ({ source, isPaused }) => {
+const VideoPlayer = ({source, isPaused}) => {
   const videoRef = useRef(null);
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.seek(0); // Reset video to the beginning when unpaused
+      videoRef.current.seek(0);
     }
   }, [isPaused]);
 
@@ -32,14 +32,14 @@ const VideoPlayer = ({ source, isPaused }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
-    width: width*0.9,
-    height: height*0.7,
+    flex: 1,
+    width: width * 0.9,
+    height: height * 0.7,
     justifyContent: 'center',
     alignItems: 'center',
   },
   video: {
-    borderRadius:25,
+    borderRadius: 25,
     width: '100%',
     height: '100%',
   },

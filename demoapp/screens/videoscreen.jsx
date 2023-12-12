@@ -1,6 +1,7 @@
 // VideoCarousel.jsx
 
 import React from 'react';
+import {useState} from 'react';
 import {View, StyleSheet, Dimensions, Text} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import VideoPlayer from '../component/videoplayer';
@@ -15,16 +16,13 @@ const videos = [
 ];
 
 const VideoCarousel = () => {
-  const [activeSlide, setActiveSlide] = React.useState(0);
- // const videoRef = React.useRef(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+  // const videoRef = React.useRef(null);
 
   const renderItem = ({item, index}) => (
     <View style={styles.carouselItem}>
       {index == activeSlide ? (
-        <VideoPlayer 
-          source={item.source}
-          paused={index !== activeSlide}
-        />
+        <VideoPlayer source={item.source} paused={index !== activeSlide} />
       ) : (
         <></>
       )}
@@ -33,7 +31,15 @@ const VideoCarousel = () => {
 
   return (
     <View style={styles.container}>
-      <Text style = {{color:'white' ,textAlignVertical:'center',margin:12,fontSize: 25}}>Video Player</Text>
+      <Text
+        style={{
+          color: 'white',
+          textAlignVertical: 'center',
+          margin: 12,
+          fontSize: 25,
+        }}>
+        Video Player
+      </Text>
       <Carousel
         data={videos}
         renderItem={renderItem}
@@ -62,8 +68,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: 'green', // Added green border
-    marginTop: 0, // Added marginTop to ensure nothing overlaps at the top
+    borderColor: 'green',
+    marginTop: 0,
   },
   carouselItem: {
     width: width * 0.9,
